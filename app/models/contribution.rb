@@ -1,3 +1,3 @@
 class Contribution < ActiveRecord::Base
-	validates :name, presence: true
+	validates :name, :amount, presence: true
 end

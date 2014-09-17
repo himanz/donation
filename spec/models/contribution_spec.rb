@@ -7,9 +7,11 @@ describe Contribution do
   end
 
   it "is invalid without a name" do
-  	expect(Contribution.new(name:nil)).to have(1).errors_on(:name)
+  	expect(Contribution.new(name: nil)).to have(1).errors_on(:name)
   end
-  
-  it "is invalid without an amount"
+
+  it "is invalid without an amount" do
+  	expect(Contribution.new(amount: nil)).to have(1).errors_on(:amount)
+  end
   it "is invalid without a message"
 end
