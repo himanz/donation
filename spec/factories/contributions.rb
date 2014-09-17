@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :contribution do
-    name "MyString"
-    amount "9.99"
-    message "MyString"
+    name "Test donation"
+    amount 3.50
+    message "This is a test donation"
   end
 end
