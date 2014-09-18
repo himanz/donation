@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   describe "GET #show" do
-  	before do
+  	before :each do
   		@user = create(:user)
   		get :show, id: @user
   	end
@@ -11,11 +11,10 @@ describe UsersController do
       expect(assigns(:user)).to eq @user
   	end
 
-  	it "populates an array with all contributions for user" do
+  	it "populates an array with all contributions for user by date created descending order" do
   		contribution1 = create(:contribution, user_id: @user.id)
-  		contribution2 = create(:contribution, user_id: @user.id)
-  		
-  		expect(assigns(:contributions)).to match_array([contribution1, contribution2])
+  		contribution2 = create(:contribution2, user_id: @user.id)
+  		expect(assigns(:contributions)).to eq [contribution2, contribution1]
   	end
 
   	it "renders the :show template" do
