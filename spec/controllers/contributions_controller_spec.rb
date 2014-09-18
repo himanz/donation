@@ -63,7 +63,11 @@ describe ContributionsController do
   			}.to_not change(Contribution, :count)
   		end
 
-  		it "re-renders the :new template"
+  		it "re-renders the :new template" do
+  			user = create(:user)
+  			post :create, user_id: user.id, contribution: attributes_for(:contribution_invalid)
+  			expect(response).to render_template :new
+  		end
   	end
   end
 end
