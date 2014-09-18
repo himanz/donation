@@ -9,7 +9,7 @@ describe ContributionsController do
   # end
 
   describe 'GET#show' do
-  	before :each do
+  	before do
   		@user = create(:user)
   		@contribution = create(:contribution, user: @user)
   		get :show, id: @contribution, user_id: @user.id
@@ -25,12 +25,18 @@ describe ContributionsController do
   end
 
   describe 'GET #new' do
-  	it "assigns a new Contribution to @contribution" do
+  	before do
   		user = create(:user)
   		get :new, user_id: user.id
+  	end
+
+  	it "assigns a new Contribution to @contribution" do
   		expect(assigns(:contribution)).to be_a_new(Contribution)
   	end
-    it "renders the :new template"
+
+    it "renders the :new template" do
+    	expect(response).to render_template :new
+    end
   end
 
   describe "POST #create" do
