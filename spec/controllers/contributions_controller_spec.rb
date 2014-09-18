@@ -9,13 +9,19 @@ describe ContributionsController do
   # end
 
   describe 'GET#show' do
-  	it "assigns the requested contribution to @contribution" do
-  		user = create(:user)
-  		contribution = create(:contribution, user: user)
-  		get :show, id: contribution, user_id: user.id
-  		expect(assigns(:contribution)).to eq contribution
+  	before :each do
+  		@user = create(:user)
+  		@contribution = create(:contribution, user: @user)
+  		get :show, id: @contribution, user_id: @user.id
   	end
-  	it "renders the :show template"
+  	
+  	it "assigns the requested contribution to @contribution" do
+  		expect(assigns(:contribution)).to eq @contribution
+  	end
+
+  	it "renders the :show template" do
+  		expect(response).to render_template :show
+  	end
   end
 
   describe 'GET #new' do
