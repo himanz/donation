@@ -41,7 +41,12 @@ describe ContributionsController do
 
   describe "POST #create" do
   	context "with valid attributes" do
-  		it "saves the new contribution in the database"
+  		it "saves the new contribution in the database" do
+  			user = create(:user)
+  			expect{
+  				post :create, user_id: user.id, contribution: attributes_for(:contribution)
+  			}.to change(Contribution, :count).by(1)
+  		end
   		it "redirects to users#show"
   	end
 
