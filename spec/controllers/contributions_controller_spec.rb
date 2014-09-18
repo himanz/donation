@@ -47,7 +47,12 @@ describe ContributionsController do
   				post :create, user_id: user.id, contribution: attributes_for(:contribution)
   			}.to change(Contribution, :count).by(1)
   		end
-  		it "redirects to users#show"
+
+  		it "redirects to users#show" do
+  			user = create(:user)
+  			post :create, user_id: user.id, contribution: attributes_for(:contribution)
+  			expect(response).to redirect_to user_path(user)
+  		end
   	end
 
   	context "with invalid attributes" do
