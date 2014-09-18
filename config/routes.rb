@@ -56,6 +56,6 @@ Rails.application.routes.draw do
   #   end
   root 'static_pages#home'
   resources :users, only: [:show] do
-    resources :contributions, only: [:show]
+    resources :contributions, only: [:show, :new]
   end
 end

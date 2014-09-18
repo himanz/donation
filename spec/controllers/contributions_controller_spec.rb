@@ -14,7 +14,7 @@ describe ContributionsController do
   		@contribution = create(:contribution, user: @user)
   		get :show, id: @contribution, user_id: @user.id
   	end
-  	
+
   	it "assigns the requested contribution to @contribution" do
   		expect(assigns(:contribution)).to eq @contribution
   	end
@@ -25,7 +25,11 @@ describe ContributionsController do
   end
 
   describe 'GET #new' do
-  	it "assigns a new Contribution to @contribution"
+  	it "assigns a new Contribution to @contribution" do
+  		user = create(:user)
+  		get :new, user_id: user.id
+  		expect(assigns(:contribution)).to be_a_new(Contribution)
+  	end
     it "renders the :new template"
   end
 
