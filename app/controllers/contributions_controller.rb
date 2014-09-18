@@ -4,6 +4,7 @@ class ContributionsController < ApplicationController
 	end
 
 	def new
+		@user = User.find(params[:user_id])
 		@contribution = Contribution.new
 	end
 

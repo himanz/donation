@@ -1,0 +1,14 @@
+<div class="form">
+	<%= form_for [@user, @contribution] do |f| %>
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+
+	  <%= f.label :amount %>
+	  <%= f.number_field :amount, step: 0.01 %>
+
+	  <%= f.label :message %>
+	  <%= f.text_field :message %>
+
+	  <%= f.submit %>
+	<% end %>
+</div>
