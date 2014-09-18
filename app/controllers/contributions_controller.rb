@@ -11,6 +11,7 @@ class ContributionsController < ApplicationController
 	def create
 		@user = User.find(params[:user_id])
 		@contribution = Contribution.new(contribution_params)
+		@contribution.user_id = @user.id
 		respond_to do |format|
 			if @contribution.save
 				format.html { redirect_to @user }
@@ -23,6 +24,6 @@ class ContributionsController < ApplicationController
   private
 
   def contribution_params
-  	params.require(:contribution).permit(:name, :amount, :message)
+  	params.require(:contribution).permit(:name, :amount, :message, :user_id)
   end
 end
