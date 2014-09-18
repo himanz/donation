@@ -5,6 +5,10 @@ FactoryGirl.define do
     name "Test donation"
     amount 3.50
     message "This is a test donation"
-    user
+    # user
+
+    factory :contribution_invalid do
+	  	name nil
+	  end
   end
 end

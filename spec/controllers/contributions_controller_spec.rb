@@ -56,7 +56,13 @@ describe ContributionsController do
   	end
 
   	context "with invalid attributes" do
-  		it "does not save the new contribution in the database"
+  		it "does not save the new contribution in the database" do
+  			user = create(:user)
+  			expect{
+  				post :create, user_id: user.id, contribution: attributes_for(:contribution_invalid)
+  			}.to_not change(Contribution, :count)
+  		end
+
   		it "re-renders the :new template"
   	end
   end
