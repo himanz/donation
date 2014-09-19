@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   has_many :contributions
 
   def self.get_contributions(id)
-  	Contribution.where(user_id: id).order("created_at DESC")
+  	Contribution.where(user_id: id)
   end
 end
