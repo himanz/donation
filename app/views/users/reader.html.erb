@@ -1,5 +1,26 @@
-<% @contributions.each do |contribution| %>
-  <%= contribution.name %>
-  <%= contribution.amount %>
-  <%= contribution.message %>
-<% end %>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Amount</th>
+			<th>Message</th>
+			<th>Read</th>
+		</tr>
+	</thead>
+	<% @contributions.each do |contribution| %>
+		<tr>
+			<td>
+		    <%= contribution.name %>
+		  </td>
+		  <td>
+		    <%= contribution.amount %>
+		  </td>
+		  <td>
+		    <%= contribution.message %>
+		  </td>
+		  <td>
+		  	<%= button_tag :Done %>
+		  </td>
+		</tr>
+	<% end %>
+<table>
