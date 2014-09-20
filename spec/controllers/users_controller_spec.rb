@@ -33,6 +33,10 @@ describe UsersController do
   		contribution2 = create(:contribution2, user_id: @user.id)
   		expect(assigns(:contributions)).to eq [contribution1, contribution2]
     end
-    it "renders the :reader template"
+
+    it "renders the :reader template" do
+    	get :reader, id: @user
+    	expect(response).to render_template :reader
+    end
   end
 end
