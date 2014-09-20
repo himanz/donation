@@ -82,7 +82,12 @@ describe ContributionsController do
   			patch :update, user_id: @user.id, id: @contribution, :contribution => {:display => false}
   			expect(assigns(:contribution)).to eq(@contribution)
   		end
-  		it "changes @contribution's attributes"
+
+  		it "changes @contribution's attributes" do
+  			patch :update, user_id: @user.id, id: @contribution, :contribution => {:display => false}
+  			@contribution.reload
+  			expect(@contribution.display).to eq(false)
+  		end
   		it "redirects to user reader page"
   	end
 
