@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :users, only: [:show] do
-    resources :contributions, only: [:show, :new, :create]
+    resources :contributions, only: [:show, :new, :create, :update]
   end
   
   get "users/:id/reader", :to => 'users#reader'

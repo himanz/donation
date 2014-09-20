@@ -21,6 +21,13 @@ class ContributionsController < ApplicationController
 		end
 	end
 
+	def update
+		@contribution = Contribution.find(params[:id])
+    if @contribution.update(contribution_params)
+    	redirect_to root_path
+    end
+	end
+
   private
 
   def contribution_params

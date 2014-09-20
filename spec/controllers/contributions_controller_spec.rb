@@ -70,4 +70,24 @@ describe ContributionsController do
   		end
   	end
   end
+
+  describe "Patch #update" do 	
+  	before :each do
+  		@user = create(:user)
+  		@contribution = create(:contribution, user: @user)
+  	end
+
+  	context "valid attributes" do
+  		it "located the requested @contribution" do
+  			patch :update, user_id: @user.id, id: @contribution, :contribution => {:display => false}
+  			expect(assigns(:contribution)).to eq(@contribution)
+  		end
+  		it "changes @contribution's attributes"
+  		it "redirects to user reader page"
+  	end
+
+  	context "with invalid attributes" do
+  		it "does not change the contribution's attributes"
+  	end
+  end
 end
