@@ -72,22 +72,23 @@ describe ContributionsController do
   end
 
   describe "Patch #update" do 	
-  	before :each do
-  		@user = create(:user)
-  		@contribution = create(:contribution, user: @user)
-  	end
-
   	context "valid attributes" do
-  		it "located the requested @contribution" do
-  			patch :update, user_id: @user.id, id: @contribution, :contribution => {:display => false}
+  		before :each do
+  			@user = create(:user)
+  			@contribution = create(:contribution, user: @user)
+  		end
+  		
+  		it "located the requested @contribution" do  			
+  			patch :update, user_id: @user.id, id: @contribution.id, :contribution => {:display => false}
   			expect(assigns(:contribution)).to eq(@contribution)
   		end
 
   		it "changes @contribution's attributes" do
-  			patch :update, user_id: @user.id, id: @contribution, :contribution => {:display => false}
+  			patch :update, user_id: @user.id, id: @contribution.id, :contribution => {:display => false}
   			@contribution.reload
   			expect(@contribution.display).to eq(false)
   		end
+
   		it "redirects to user reader page"
   	end
 

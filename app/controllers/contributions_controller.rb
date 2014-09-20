@@ -22,6 +22,7 @@ class ContributionsController < ApplicationController
 	end
 
 	def update
+		@user = User.find(params[:user_id])
 		@contribution = Contribution.find(params[:id])
     if @contribution.update(contribution_params)
     	redirect_to root_path
