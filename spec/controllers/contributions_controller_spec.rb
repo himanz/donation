@@ -72,12 +72,12 @@ describe ContributionsController do
   end
 
   describe "Patch #update" do 	
-  	context "valid attributes" do
-  		before :each do
-  			@user = create(:user)
-  			@contribution = create(:contribution, user: @user)
-  		end
+  	before :each do
+			@user = create(:user)
+			@contribution = create(:contribution, user: @user)
+  	end
 
+  	context "valid attributes" do
   		it "located the requested @contribution" do  			
   			patch :update, user_id: @user.id, id: @contribution.id, :contribution => {:display => false}
   			expect(assigns(:contribution)).to eq(@contribution)
@@ -96,7 +96,11 @@ describe ContributionsController do
   	end
 
   	context "with invalid attributes" do
-  		it "does not change the contribution's attributes"
+  		it "does not change the contribution's attributes" do
+  			patch :update, user_id: @user.id, id: @contribution.id, :contribution => {:name => nil}
+  			@contribution.reload
+  			expect(@contribution.name).to eq("Test donation")
+  		end
   	end
   end
 end

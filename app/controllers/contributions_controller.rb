@@ -26,6 +26,8 @@ class ContributionsController < ApplicationController
 		@contribution = Contribution.find(params[:id])
     if @contribution.update(contribution_params)
     	redirect_to user_reader_path(@user)
+    else
+    	redirect_to user_reader_path(@user)
     end
 	end
 
