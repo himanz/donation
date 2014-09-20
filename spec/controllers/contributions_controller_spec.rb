@@ -101,6 +101,11 @@ describe ContributionsController do
   			@contribution.reload
   			expect(@contribution.name).to eq("Test donation")
   		end
+
+  		it "redirects to user reader page" do
+  			patch :update, user_id: @user.id, id: @contribution.id, :contribution => {:name => nil}
+  			expect(response).to redirect_to user_reader_path(@user)
+  		end
   	end
   end
 end
