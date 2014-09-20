@@ -77,7 +77,7 @@ describe ContributionsController do
   			@user = create(:user)
   			@contribution = create(:contribution, user: @user)
   		end
-  		
+
   		it "located the requested @contribution" do  			
   			patch :update, user_id: @user.id, id: @contribution.id, :contribution => {:display => false}
   			expect(assigns(:contribution)).to eq(@contribution)
@@ -89,7 +89,10 @@ describe ContributionsController do
   			expect(@contribution.display).to eq(false)
   		end
 
-  		it "redirects to user reader page"
+  		it "redirects to user reader page" do
+  			patch :update, user_id: @user.id, id: @contribution.id, :contribution => {:display => false}
+  			expect(response).to redirect_to user_reader_path(@user)
+  		end
   	end
 
   	context "with invalid attributes" do

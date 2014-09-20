@@ -60,5 +60,5 @@ Rails.application.routes.draw do
     resources :contributions, only: [:show, :new, :create, :update]
   end
   
-  get "users/:id/reader", :to => 'users#reader'
+  get "users/:id/reader", :to => 'users#reader', as: "user_reader"
 end
