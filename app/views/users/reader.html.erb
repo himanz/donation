@@ -19,7 +19,10 @@
 		    <%= contribution.message %>
 		  </td>
 		  <td>
-		  	<%= button_tag :Done %>
+		  	<%= form_for [@user, contribution] do |f| %>
+		  	  <%= f.hidden_field :display, value: false %>
+		  	  <%= f.submit :Done %>
+		  	<% end %>
 		  </td>
 		</tr>
 	<% end %>
