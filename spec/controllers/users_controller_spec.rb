@@ -28,10 +28,16 @@ describe UsersController do
   		get :reader, id: @user
   	end
 
-    it "assigns the requested business to @business" do
+    it "assigns the requested contribution to @contribution" do
+    	contribution1 = create(:contribution, user_id: @user.id)
+  		contribution2 = create(:contribution2, user_id: @user.id, display: false)
+  		contribution3 = create(:contribution2, user_id: @user.id)
+  		expect(assigns(:contributions)).to eq [contribution1, contribution3]
+    end
+
+    it "populates an array with contributions with display true attribute" do
     	contribution1 = create(:contribution, user_id: @user.id)
   		contribution2 = create(:contribution2, user_id: @user.id)
-  		expect(assigns(:contributions)).to eq [contribution1, contribution2]
     end
 
     it "renders the :reader template" do

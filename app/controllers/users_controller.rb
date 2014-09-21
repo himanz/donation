@@ -6,6 +6,6 @@ class UsersController < ApplicationController
 
 	def reader
 		@user = User.find(params[:id])
-		@contributions = User.get_contributions(@user.id)
+		@contributions = @user.contributions.find_by_display
 	end
 end
