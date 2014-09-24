@@ -1,0 +1,6 @@
+<% @contributions.each do |contribution| %>
+  <%= "Name: " + contribution.name %>
+  <%= "Amount: $" + contribution.amount.to_s %>
+  <%= "Message: " + contribution.message %>
+  <br>
+<% end %>
